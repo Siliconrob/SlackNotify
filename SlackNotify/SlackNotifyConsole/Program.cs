@@ -12,17 +12,10 @@ namespace SlackNotifyConsole
         static void Main(string[] args)
         {
             DoStuff();
-            Thread th = new Thread(new ThreadStart(DoStuff));
-            th.Start();
-
-            while (th.IsAlive)
-            {
-                Thread.Sleep(0);
-            }
         }
 
 
-        async static void DoStuff()
+        static void DoStuff()
         {
             Console.WriteLine("Enter your message to send : ");
             string message = Console.ReadLine();
@@ -30,7 +23,7 @@ namespace SlackNotifyConsole
             Console.WriteLine("Enter the channel to send the message to : ");
             string channel = Console.ReadLine();
 
-            await Notify.Send(channel, message, "slack-notify-console");
+            Notify.Send(channel, message, "slack-notify-console");
         }
     }
 }
