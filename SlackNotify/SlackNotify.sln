@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SlackNotify", "SlackNotify\SlackNotify.csproj", "{B1B6A73E-AAF9-4CEA-A78E-3DED253A62E7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SlackNotifyConsole", "SlackNotifyConsole\SlackNotifyConsole.csproj", "{377F2F01-1CC4-4223-8574-01E8311CF80D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B1B6A73E-AAF9-4CEA-A78E-3DED253A62E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1B6A73E-AAF9-4CEA-A78E-3DED253A62E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B1B6A73E-AAF9-4CEA-A78E-3DED253A62E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B1B6A73E-AAF9-4CEA-A78E-3DED253A62E7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{377F2F01-1CC4-4223-8574-01E8311CF80D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{377F2F01-1CC4-4223-8574-01E8311CF80D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{377F2F01-1CC4-4223-8574-01E8311CF80D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{377F2F01-1CC4-4223-8574-01E8311CF80D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
