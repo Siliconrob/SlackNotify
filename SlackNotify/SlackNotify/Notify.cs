@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Net;
 using System.Net.Http;
 using System.Runtime.Serialization.Json;
@@ -17,9 +18,9 @@ namespace SlackNotify
         /// </summary>
         /// <param name="message">the message to send</param>
         /// <returns>true if successful; otherwise false</returns>
-        public static async Task<bool> Send(string message)
+        public static bool Send(string message)
         {
-            return await Send("", message, "");
+            return Send("", message, "");
         }
 
 
@@ -29,7 +30,7 @@ namespace SlackNotify
         /// <param name="channel">the channel to send the message to; if empty string it will default to #general</param>
         /// <param name="message">the message to send</param>
         /// <returns>true if successful; otherwise false</returns>
-        public static async Task<bool> Send(string channel, string message, string user)
+        public static bool Send(string channel, string message, string user)
         {
             bool result = false;
 
@@ -38,7 +39,7 @@ namespace SlackNotify
                 channel = "#general";
             }
 
-            var client = new HttpClient();
+            var client = new WebClient();
 
             try
             {
@@ -50,11 +51,19 @@ namespace SlackNotify
                     payload.username = user;
                 }
 
-                // Get the response.
-                HttpResponseMessage response = await client.PostAsJsonAsync(WEBHOOK_URL, payload);
+                string p = string.Format("{{\"channel\": \"{0}\", \"text\": \"{1}\", \"username\": \"{2}\"}}", payload.channel, payload.text, payload.username);
 
-                // Get the response content.
-                result = response.IsSuccessStatusCode;
+                NameValueCollection form = new NameValueCollection();
+                form.Add("payload", p);
+
+                byte[] responsedata = client.UploadValues(WEBHOOK_URL, form);
+
+                if(responsedata.Length >= 2){
+                    if (responsedata[0] == 0x6f && responsedata[1] == 0x6b)
+                    {
+                        result = true;
+                    }
+                }
             }
             catch (Exception e)
             {
