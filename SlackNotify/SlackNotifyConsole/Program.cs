@@ -20,10 +20,11 @@ namespace SlackNotifyConsole
             Console.WriteLine("Enter your message to send : ");
             string message = Console.ReadLine();
 
-            Console.WriteLine("Enter the channel to send the message to : ");
-            string channel = Console.ReadLine();
+            //Console.WriteLine("Enter the channel to send the message to : ");
+            //string channel = Console.ReadLine();
 
-            Notify.Send(channel, message, "slack-notify-console");
+            Notify notify = new Notify();
+            notify.Send(message);
         }
     }
 }
