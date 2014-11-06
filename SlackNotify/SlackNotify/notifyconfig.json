@@ -1,5 +1,5 @@
 ﻿{
-	WebHookURL: "https://hooks.slack.com/services/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",
-	Channel: "#rik-test",
+	WebHookURL: "YOUR_WEBHOOK_URL_HERE",
+	Channel: "#general",
 	Avatar: ":alien:"
 }
