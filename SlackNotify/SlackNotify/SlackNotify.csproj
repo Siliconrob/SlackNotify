@@ -51,7 +51,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="notifyconfig.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="packages.config" />
   </ItemGroup>
