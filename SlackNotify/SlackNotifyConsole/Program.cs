@@ -1,30 +1,34 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading;
-
+using System.IO;
+using System.Linq;
 using SlackNotify;
 
 namespace SlackNotifyConsole
 {
-    class Program
+  class Program
+  {
+    private static void Main(string[] args)
     {
-        static void Main(string[] args)
+      var fileName = "settings.json";
+      if (args.Length > 0)
+      {
+        var firstOrDefault = args.FirstOrDefault();
+        if (firstOrDefault == null)
         {
-            DoStuff();
+          Console.WriteLine("Null settings file input");
+          return;
         }
+        fileName = firstOrDefault.Trim();
+      }
 
-
-        static void DoStuff()
-        {
-            Console.WriteLine("Enter your message to send : ");
-            string message = Console.ReadLine();
-
-            //Console.WriteLine("Enter the channel to send the message to : ");
-            //string channel = Console.ReadLine();
-
-            Notify notify = new Notify();
-            notify.Send(message);
-        }
+      var settingsFile = new FileInfo(fileName);
+      if (!settingsFile.Exists)
+      {
+        Console.WriteLine("{0} does not exist", fileName);
+        return;
+      }
+      var notify = new Notify(settingsFile);
+      notify.Send();
     }
+  }
 }

@@ -57,3 +57,4 @@ _ReSharper*/
 
 #NuGet
 #packages/
+SlackNotify/.vs/config/applicationhost.config
