@@ -7,26 +7,25 @@ using Newtonsoft.Json;
 
 namespace SlackNotify
 {
-  public class Notify
+  public static class Notify
   {
-    private readonly Settings settings;
-
     /// <summary>
     /// Initialises an instance of the Notify class. Requires that a json config file exists containing the webhook URL.
     /// </summary>
     /// <exception cref="FileNotFoundException"></exception>
     /// <exception cref="UriFormatException"></exception>
-    public Notify(FileSystemInfo optionsFile)
+    private static Settings ReadSettings(FileSystemInfo optionsFile)
     {
       if (!optionsFile.Exists)
       {
         throw new FileNotFoundException("Config file not found", optionsFile.Name);
       }
-      settings = JsonConvert.DeserializeObject<Settings>(File.ReadAllText(optionsFile.FullName));
+      var settings = JsonConvert.DeserializeObject<Settings>(File.ReadAllText(optionsFile.FullName));
       if (!IsValidUri(settings.WebHookURL))
       {
         throw new UriFormatException("Invalid WebHookURL");
       }
+      return settings;
     }
 
     /// <summary>
@@ -35,8 +34,9 @@ namespace SlackNotify
     /// <exception cref="UriFormatException"></exception>
     /// <exception cref="ArgumentException"></exception>
     /// <returns>true if successful; otherwise false</returns>
-    public bool Send()
+    public static bool Send(FileSystemInfo optionsFile)
     {
+      var settings = ReadSettings(optionsFile);
       var result = false;
 
       if (IsValidUri(settings.WebHookURL) == false) { throw new UriFormatException("Invalid Slack WebHook URL");}

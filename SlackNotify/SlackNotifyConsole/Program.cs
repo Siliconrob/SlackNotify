@@ -27,8 +27,7 @@ namespace SlackNotifyConsole
         Console.WriteLine("{0} does not exist", fileName);
         return;
       }
-      var notify = new Notify(settingsFile);
-      notify.Send();
+      Notify.Send(settingsFile);
     }
   }
 }
