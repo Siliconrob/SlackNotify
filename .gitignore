@@ -59,3 +59,7 @@ _ReSharper*/
 #packages/
 SlackNotify/.vs/config/applicationhost.config
 SlackNotify/SlackNotifyConsole/settings.Release.json
+*.dll
+*.xml
+SlackNotify/packages/Newtonsoft.Json.9.0.1/Newtonsoft.Json.9.0.1.nupkg
+SlackNotify/packages/Newtonsoft.Json.9.0.1/tools/install.ps1
