@@ -75,6 +75,7 @@ namespace SlackNotify
     /// Checks for a valid URI and URI Scheme
     /// </summary>
     /// <param name="uriName">The Uri to test</param>
+    /// <param name="Https">Send requests https instead of http</param>
     /// <returns>true if valid; otherwise false</returns>
     private static bool IsValidUri(string uriName, bool Https = true)
     {
