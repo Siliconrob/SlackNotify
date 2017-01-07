@@ -63,3 +63,4 @@ SlackNotify/SlackNotifyConsole/settings.Release.json
 *.xml
 SlackNotify/packages/Newtonsoft.Json.9.0.1/Newtonsoft.Json.9.0.1.nupkg
 SlackNotify/packages/Newtonsoft.Json.9.0.1/tools/install.ps1
+*.dg
